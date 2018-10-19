@@ -30,7 +30,7 @@ int main() {
   else if ((salario >= 1903.99) && (salario <= 2825.65)) {
     salarioTotal = (((salario * 0.075) - 142.80) - salario) * -1;
   }
-  else {
+  else { //teste
     salarioTotal = salario;
   }
   printf("\nO seu salario era de R$%.2f, o valor do imposto foi de R$%.2f\n",salario,salario - salarioTotal);
