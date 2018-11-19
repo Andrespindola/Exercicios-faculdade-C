@@ -1,0 +1,74 @@
+#include "pch.h"
+#include <stdlib.h>
+#include <stdio.h>
+//funcao que faz o calculo da media
+int calculo(int apolsTotal, int PO, int PD, int AP) {
+	int media;
+	//declaracao das variaveis
+	media = ((apolsTotal / 5) * 20 + PO * 20 + PD * 30 + AP * 30) / 100;
+	//faz o retorno 1 aprovado , 2 exame e 3 reprovado.
+	if (media > 69) {
+		return 1;
+	}
+	else if (media > 38 && media < 70) {
+		return 2;
+	}
+	else {
+		return 3;
+	}
+}
+
+int main() {
+	//declaracao de variaveis
+	int apolsTotal = 0, apol[4], PO, PD, AP, mediaAluno, status;
+	//pede as notas das apols
+	printf("Digite as notas de suas Apols.\n");
+	//laço para pegar os valores das 5 apols
+	for (int i = 0; i < 5; i++) {
+		printf("Apol [%d]:", i + 1);
+		scanf_s("%d", &apol[i]);
+		//laço de repeticao para negar valores maiores que 100
+		while (apol[i] > 100) {
+			printf("Valor invalido por favor digite o valor da apol [%d] novamente\n", apol[i]);
+			scanf_s("%d", &apol[i]);
+		}
+		//variavel que armazena o total das notas Apols
+		apolsTotal += apol[i];
+	}
+	//nota Prova objetiva
+	printf("Digite a nota de sua Prova objetiva\n");
+	scanf_s("%d", &PO);
+	while (PO > 100) {
+		printf("Valor invalido por favor digite o valor da Prova Objetiva novamente\n");
+		scanf_s("%d", &PO);
+	}
+	//nota Prova Discursiva
+	printf("Digite a nota de sua Prova Discursiva\n");
+	scanf_s("%d", &PD);
+	while (PD > 100) {
+		printf("Valor invalido por favor digite o valor da Prova Discursiva novamente\n");
+		scanf_s("%d", &PD);
+	}
+	//nota Atividade Pratica
+	printf("Digite a nota de sua Atividade Pratica\n");
+	scanf_s("%d", &AP);
+	while (AP > 100) {
+		printf("Valor invalido por favor digite o valor da Atividade Pratica novamente\n");
+		scanf_s("%d", &AP);
+	}
+	//faz o calculo da media e apresenta depois para o aluno.
+	mediaAluno = ((apolsTotal / 5) * 20 + PO * 20 + PD * 30 + AP * 30) / 100;
+	printf("\n");//apenas quebra linha
+	status = calculo(apolsTotal, PO, PD, AP);
+	if (status == 1) {
+		printf("Parabens sua media foi de %d e voce esta APROVADO.\n", mediaAluno);
+	}
+	else if (status == 2) {
+		printf("Que pena sua media foi de %d e por isso voce esta em EXAME.\n", mediaAluno);
+	}
+	else {
+		printf("Que pena sua media foi de %d e por isso voce esta REPROVADO.\n", mediaAluno);
+	}
+	return 0;
+}
+
