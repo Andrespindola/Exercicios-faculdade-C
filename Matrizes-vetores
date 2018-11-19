@@ -1,0 +1,83 @@
+#include "pch.h"
+#include <stdlib.h>
+#include <stdio.h>
+
+int main() {
+	//declacarao das variaveis
+	int matrizA[5][5], matrizB[5][5], matrizSoma[5][5], vetor[5], tamanhoMatriz=0, i=0, j=0, v=0;
+	//laço de repeticao para negar valores maiores que 5 ou <= a 0
+	do {
+		printf("Digite o tamanho da matriz(lembre-se maximo 5)\n");
+		scanf_s("%d", &tamanhoMatriz);
+	} while ((tamanhoMatriz > 5) && (tamanhoMatriz <= 0));
+	//primeira matriz recebe valores
+	printf("\n\nEntre com os valores para a primeira matriz [%dx%d]\n", tamanhoMatriz, tamanhoMatriz);
+	for (i = 0; i < tamanhoMatriz; i++) {
+		for (j = 0; j < tamanhoMatriz; j++) {
+			printf("[%d:%d]", i, j);
+			scanf_s("%d", &matrizA[i][j]);
+		}
+	}
+	// segunda matriz recebe valores
+	printf("\n\nEntre com os valores para a segunda matriz  [%dx%d]\n", tamanhoMatriz, tamanhoMatriz);
+	for (i = 0; i < tamanhoMatriz; i++) {
+		for (j = 0; j < tamanhoMatriz; j++) {
+			printf("[%d:%d]", i, j);
+			scanf_s("%d", &matrizB[i][j]);
+		}
+	}
+	// Formata a saída e mostrar a matriz A
+	printf("\n\nValores da matriz A [%dx%d]\n", tamanhoMatriz, tamanhoMatriz);
+	printf("-----");
+	for (j = 0; j < tamanhoMatriz; j++) {
+		printf("[%3d]", j); // Mostra o cabeçalho das colunas
+	}
+	printf("\n");
+	for (i = 0; i < tamanhoMatriz; i++) {
+		printf("[%d]", i); // Mostra a dimensão da linha
+		for (j = 0; j < tamanhoMatriz; j++) {
+			printf(" %3d ", matrizA[i][j]);
+		}
+		printf("\n");
+	}
+	// Formata a saída e mostra a matriz B
+	printf("\n\nValores da matriz B [%dx%d]\n", tamanhoMatriz, tamanhoMatriz);
+	printf("-----");
+	for (j = 0; j < tamanhoMatriz; j++) {
+		printf("[%3d]", j); //cabecalho
+	}
+	printf("\n");
+	for (i = 0; i < tamanhoMatriz; i++) {
+		printf("[%d]", i);
+		for (j = 0; j < tamanhoMatriz; j++) {
+			printf(" %3d ", matrizB[i][j]); // mostra valor da coluna e linha
+		}
+		printf("\n");
+	}
+
+	printf("\n\nSoma das matrizes\n");
+	printf("   "); // apenas espaço
+	for (j = 0; j < tamanhoMatriz; j++) {
+		printf("[%5d]", j); //cabecalho
+	}
+	printf("\n");
+	for (i = 0; i < tamanhoMatriz; i++) {
+		printf("[%d]", i); // dimensao
+		for (j = 0; j < tamanhoMatriz; j++) {
+			matrizSoma[i][j] = matrizA[i][j] + matrizB[i][j];// Soma
+			printf(" %5d ", matrizSoma[i][j] * 41);// multiplica pelo final do Ru
+			if (i == j) {// Se a dimensão esta na Diagonal principal armazena
+				vetor[v] = matrizSoma[i][j] * 41;
+				v++;
+			}
+		}
+		printf("\n");
+	}
+	// mostra o valor do vetor da diagonal
+	printf("\n\nVetor soma da diagonal principal\n");
+	for (i = 0; i < tamanhoMatriz; i++) {
+		printf("\n[%d]=%d", i, vetor[i]);
+	}
+	printf("\n");
+	return 0;
+}
